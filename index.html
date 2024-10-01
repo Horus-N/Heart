@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vũ Bảo Yến</title>
+    <title>I Love You</title>
     <style>
       * {
         margin: 0;
@@ -17,6 +17,7 @@
         align-items: center;
         min-height: 100vh;
         background: radial-gradient(#4c0c0c, #000);
+        overflow: hidden;
       }
 
       .container {
@@ -186,7 +187,7 @@
             let duration = Math.random() *0.5;
             
             e.style.left= left+'px';
-            e.style.animationDuration = 1+duration +s;
+            e.style.animationDuration = 1+duration +'s';
             setTimeout(function(){
                 heart.removeChild(e)
             },5000)
