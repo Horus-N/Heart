@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: radial-gradient(#4c0c0c, #000);
+      }
+
+      .container {
+        position: absolute;
+        height: 340px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        filter: drop-shadow(0px 0 1000px #f00);
+
+        -webkit-box-reflect: below 1px
+          linear-gradient(transparent, transparent, transparent, #0005);
+      }
+
+      .heart {
+        position: relative;
+        width: 300px;
+        height: 300px;
+      }
+
+      .heart::before {
+        content: "";
+        position: absolute;
+        top: -106px;
+        left: 19px;
+        width: 200px;
+        height: 300px;
+        background-color: #6a1629;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        rotate: 315deg;
+        z-index: 1000;
+        animation: animateHeart 1s ease infinite;
+      }
+
+      .heart::after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: 45px;
+        width: 300px;
+        height: 200px;
+        background-color: #6a1629;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        rotate: 315deg;
+        z-index: 1000;
+        animation: animateHeart 1s ease infinite;
+      }
+
+      @keyframes animateHeart {
+        0%{
+          scale:1;
+          filter: none;
+          /* filter: drop-shadow(0 0 10px #f00) drop-shadow(0 0 50px #f00); */
+
+
+        }
+        25%{
+           scale: 0.98;
+          /* filter: drop-shadow(10px 100px 1000px #f00); */
+
+          filter: drop-shadow(0 0 transparent #f00) drop-shadow(0 0 50px #f00);
+
+        }
+        50%
+         {
+          scale: 1;
+          filter: none;
+
+        }
+        75% {
+          /* filter: drop-shadow(0px 0 1000px #f00); */
+          filter: drop-shadow(0 0 transparent #f00) drop-shadow(0 0 50px #f00);
+
+          background-color: #f00;
+          scale: 0.98;
+        }
+
+        100%{
+            scale:1;
+        }
+      }
+      .drop{
+        position:absolute;
+        width: 30px;
+        height: 30px;
+        top: 40px;
+        filter: drop-shadow(5px 5px 10px #000) drop-shadow(0 0 10px #f00);
+        transform-origin: bottom;
+        animation: animate 4s linear forwards;
+      }
+
+      .drop::before{
+        content: '';
+        position:absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #f00;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        z-index: 100000;
+      }
+
+      .drop::before{
+        content: '';
+        position:absolute;
+        width: 20px;
+        height: 30px;
+        background-color: #f00;
+        rotate: -45deg;
+        transform-origin: bottom center;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        z-index: 100000;
+      }
+
+      .drop::after{
+        content: '';
+        position:absolute;
+        width: 30px;
+        height: 20px;
+        background-color: #f00;
+        rotate: 315deg;
+        bottom: 2.5px;
+        transform-origin: bottom center;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        z-index: 100000;
+      }
+
+
+      @keyframes animate {
+        0%{
+            top: 40px;
+            opacity: 1;
+            scale: 1;
+        }
+        70%{
+            top: 400px;
+            opacity: 1;
+        }80%{
+            top: 400px;
+        }100%{
+            top:400px;
+            opacity:0;
+            scale:0
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="heart"></div>
+    </div>
+
+    <script>
+        function rain(){
+            let heart = document.querySelector('.heart');
+            let e = document.createElement('div');
+            e.classList.add('drop');
+            heart.appendChild(e)
+
+            let left = Math.floor(Math.random() * 300)
+            let duration = Math.random() *0.5;
+            
+            e.style.left= left+'px';
+            e.style.animationDuration = 1+duration +s;
+            setTimeout(function(){
+                heart.removeChild(e)
+            },5000)
+        }
+
+        setInterval(function(){
+            rain()
+        },50)
+    </script>
+  </body>
+</html>
